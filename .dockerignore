@@ -1,0 +1,16 @@
+# Ignore System
+.DS_Store
+.git
+.gitignore
+
+# Ignore Backend Junk
+backend/venv
+backend/__pycache__
+backend/dataset
+backend/temp_uploads
+backend/pending_review
+
+# Ignore Frontend Junk
+frontend/node_modules
+frontend/.next
+frontend/out

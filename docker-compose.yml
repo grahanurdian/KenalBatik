@@ -1,0 +1,27 @@
+services:
+  # Service 1: The Brain (API)
+  backend:
+    build: ./backend
+    container_name: kenalbatik-api
+    ports:
+      - "8000:8000"
+    volumes:
+      # PERSISTENCE: Keep your 'dataset' and 'pending_review' safe
+      # This maps the folder inside Docker back to your Mac
+      - ./backend/dataset:/app/dataset
+      - ./backend/pending_review:/app/pending_review
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  # Service 2: The Face (UI)
+  frontend:
+    build: ./frontend
+    container_name: kenalbatik-ui
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      # Since Next.js runs in the browser, "localhost" refers to the user's machine,
+      # which is mapped to the backend container.
+      NEXT_PUBLIC_API_URL: http://localhost:8000
