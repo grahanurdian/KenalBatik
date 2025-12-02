@@ -18,6 +18,8 @@ app = FastAPI()
 os.makedirs("temp_uploads", exist_ok=True)
 # Ensure dataset exists (optional, but good practice if we are moving files there)
 os.makedirs("dataset", exist_ok=True)
+# Ensure pending_review exists
+os.makedirs("pending_review", exist_ok=True)
 
 # --- 1. CONFIGURATION ---
 app.add_middleware(
@@ -233,11 +235,11 @@ def submit_feedback(feedback: FeedbackRequest):
     if not os.path.exists(temp_path):
         return {"error": "File not found or expired"}
 
-    # 3. Move to Dataset
-    target_dir = os.path.join("dataset", feedback.correct_label)
+    # 3. Move to Pending Review (Prevent Data Poisoning)
+    target_dir = os.path.join("pending_review", feedback.correct_label)
     os.makedirs(target_dir, exist_ok=True)
     
     target_path = os.path.join(target_dir, feedback.file_id)
     shutil.move(temp_path, target_path)
 
-    return {"message": "Image added to training data", "path": target_path}
+    return {"message": "Feedback received. Image queued for review.", "path": target_path}
