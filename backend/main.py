@@ -11,6 +11,15 @@ import shutil
 import os
 import uuid
 from pydantic import BaseModel
+from functools import lru_cache
+import hashlib
+
+# Global Cache
+PREDICTION_CACHE = {}
+
+@lru_cache(maxsize=100)
+def get_cached_prediction(file_hash):
+    return None
 
 app = FastAPI()
 
@@ -181,6 +190,14 @@ def read_root():
 
 @app.post("/analyze")
 def analyze_batik(file: UploadFile = File(...)):
+    # 0. Hashing & Caching
+    content = file.file.read()
+    file_hash = hashlib.md5(content).hexdigest()
+    file.file.seek(0)
+
+    if file_hash in PREDICTION_CACHE:
+        return PREDICTION_CACHE[file_hash]
+
     # 1. READ IMAGE
     image_data = file.file.read()
     image = Image.open(io.BytesIO(image_data))
@@ -231,7 +248,7 @@ def analyze_batik(file: UploadFile = File(...)):
         "pattern": "Pattern details not available."
     })
 
-    return {
+    result = {
         "filename": file.filename,
         "prediction": predicted_class,
         "confidence": round(conf_score, 4),
@@ -243,6 +260,9 @@ def analyze_batik(file: UploadFile = File(...)):
         "heatmap": heatmap_base64,
         "id": file_id
     }
+    
+    PREDICTION_CACHE[file_hash] = result
+    return result
 
 class FeedbackRequest(BaseModel):
     file_id: str
