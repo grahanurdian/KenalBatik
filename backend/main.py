@@ -180,9 +180,9 @@ def read_root():
     return {"message": "Welcome to KenalBatik API"}
 
 @app.post("/analyze")
-async def analyze_batik(file: UploadFile = File(...)):
+def analyze_batik(file: UploadFile = File(...)):
     # 1. READ IMAGE
-    image_data = await file.read()
+    image_data = file.file.read()
     image = Image.open(io.BytesIO(image_data))
     
     # Convert to RGB (fixes issues with some PNGs having transparency)
