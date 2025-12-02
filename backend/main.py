@@ -2,6 +2,8 @@ from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from PIL import Image
 import io
+import base64
+from gradcam import BatikGradCAM
 import torch
 from torchvision import models, transforms
 import random
@@ -169,10 +171,22 @@ async def analyze_batik(file: UploadFile = File(...)):
         confidence, class_idx = torch.max(probabilities, 0)
         predicted_class = CLASS_NAMES[class_idx.item()]
         conf_score = confidence.item()
+
+        # --- Generate Heatmap ---
+        cam = BatikGradCAM(model)
+        # We need to use the same input tensor, but generate expects the tensor
+        # It also needs the class index we want to visualize (the predicted one)
+        heatmap_image = cam.generate(input_tensor, class_idx.item())
+        
+        # Convert PIL Image to Base64
+        buffered = io.BytesIO()
+        heatmap_image.save(buffered, format="PNG")
+        heatmap_base64 = base64.b64encode(buffered.getvalue()).decode("utf-8")
     else:
         # Emergency Fallback (If model failed to load)
         predicted_class = "Unknown"
         conf_score = 0.0
+        heatmap_base64 = None
 
     # 3. GET METADATA
     info = BATIK_INFO.get(predicted_class, {
@@ -185,5 +199,6 @@ async def analyze_batik(file: UploadFile = File(...)):
         "prediction": predicted_class,
         "confidence": round(conf_score, 4),
         "description": info["description"],
-        "pattern": info.get("pattern", "Pattern details not available.")
+        "pattern": info.get("pattern", "Pattern details not available."),
+        "heatmap": heatmap_base64
     }
