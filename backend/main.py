@@ -70,83 +70,103 @@ preprocess = transforms.Compose([
 BATIK_INFO = {
     "Bali": { 
         "description": "Bali batik often features natural elements like frangipani flowers, birds, and daily life, mixing traditional patterns with modern, vibrant colors.",
-        "pattern": "Mix of traditional motifs with modern, free-form artistic expressions, often featuring bright colors and natural imagery like flowers, birds, and dancers."
+        "pattern": "Mix of traditional motifs with modern, free-form artistic expressions, often featuring bright colors and natural imagery like flowers, birds, and dancers.",
+        "origin": "Denpasar, Bali", "lat": -8.6705, "lon": 115.2126
     },
     "Betawi": {
         "description": "Originating from Jakarta, Betawi batik features bright colors and motifs inspired by local culture like Ondel-ondel, the Ciliwung river, and tumpal patterns.",
-        "pattern": "Bright, contrasting colors with motifs of Jakarta's icons (Monas, Ondel-ondel), flora, and fauna, often arranged in a tumpal (triangle) layout."
+        "pattern": "Bright, contrasting colors with motifs of Jakarta's icons (Monas, Ondel-ondel), flora, and fauna, often arranged in a tumpal (triangle) layout.",
+        "origin": "Jakarta", "lat": -6.2088, "lon": 106.8456
     },
     "Celup": {
         "description": "Also known as Tie-Dye or Jumputan. It is made by tying sections of fabric before dyeing, creating unique, abstract, and colorful patterns.",
-        "pattern": "Abstract, radiating, or circular patterns created by binding the fabric, resulting in soft edges and color gradients."
+        "pattern": "Abstract, radiating, or circular patterns created by binding the fabric, resulting in soft edges and color gradients.",
+        "origin": "Yogyakarta", "lat": -7.7956, "lon": 110.3695
     },
     "Cendrawasih": {
         "description": "A signature motif from Papua, featuring the Bird of Paradise (Cendrawasih). It symbolizes the beauty and richness of Eastern Indonesia's nature.",
-        "pattern": "Features the distinctive Bird of Paradise with elaborate tail feathers, often set against a background of local flora or tribal geometric accents."
+        "pattern": "Features the distinctive Bird of Paradise with elaborate tail feathers, often set against a background of local flora or tribal geometric accents.",
+        "origin": "Papua", "lat": -4.2699, "lon": 138.0804
     },
     "Ceplok": {
         "description": "A geometric pattern based on squares, circles, or rosettes. It represents balance, order, and the harmonious structure of the universe.",
-        "pattern": "Repeated geometric shapes (circles, squares, rosettes) arranged in a symmetric grid, often resembling flowers or coins."
+        "pattern": "Repeated geometric shapes (circles, squares, rosettes) arranged in a symmetric grid, often resembling flowers or coins.",
+        "origin": "Yogyakarta", "lat": -7.7956, "lon": 110.3695
     },
     "Ciamis": {
         "description": "Known as 'Batik Ciamisan', it features simple, naturalistic motifs with a distinct color palette, often lacking the heavy brown (sogan) of Central Java.",
-        "pattern": "Simple, uncluttered naturalistic motifs (flora/fauna) on a light or white background, often using black, white, and yellowish-brown tones."
+        "pattern": "Simple, uncluttered naturalistic motifs (flora/fauna) on a light or white background, often using black, white, and yellowish-brown tones.",
+        "origin": "Ciamis, West Java", "lat": -7.3274, "lon": 108.3542
     },
     "Garutan": {
         "description": "From Garut, West Java. It is known for its pastel colors and simple, geometric or floral motifs, reflecting a calm and practical lifestyle.",
-        "pattern": "Geometric arrangements (like diamond shapes) filled with small, simple floral or line patterns, often in soft pastel colors (gumading)."
+        "pattern": "Geometric arrangements (like diamond shapes) filled with small, simple floral or line patterns, often in soft pastel colors (gumading).",
+        "origin": "Garut, West Java", "lat": -7.2279, "lon": 107.9087
     },
     "Gentongan": {
         "description": "A unique batik from Madura, colored in clay jars (gentong). It features bold colors and abstract designs, often symbolizing the sea and coastal life.",
-        "pattern": "Bold, abstract, and expressive designs with strong colors (red, purple, green), often featuring sea creatures or plants."
+        "pattern": "Bold, abstract, and expressive designs with strong colors (red, purple, green), often featuring sea creatures or plants.",
+        "origin": "Madura, East Java", "lat": -7.0909, "lon": 112.9065
     },
     "Kawung": {
         "description": "Inspired by the cross-section of an Areca palm fruit. It represents purity, self-control, and the hope that humans will be useful to society.",
-        "pattern": "Four oval or elliptical shapes touching at the tips, arranged in a repetitive geometric grid, resembling a four-petaled flower or palm fruit cross-section."
+        "pattern": "Four oval or elliptical shapes touching at the tips, arranged in a repetitive geometric grid, resembling a four-petaled flower or palm fruit cross-section.",
+        "origin": "Yogyakarta", "lat": -7.8014, "lon": 110.3647
     },
     "Keraton": {
         "description": "The royal batik of Yogyakarta and Surakarta. It uses earth tones (sogan) and follows strict rules, symbolizing wisdom, charisma, and nobility.",
-        "pattern": "Classic, solemn patterns using Sogan colors (dark brown, yellowish-brown, white/black), often featuring specific forbidden motifs (larangan) like large Parang or Semen."
+        "pattern": "Classic, solemn patterns using Sogan colors (dark brown, yellowish-brown, white/black), often featuring specific forbidden motifs (larangan) like large Parang or Semen.",
+        "origin": "Kraton Surakarta", "lat": -7.5761, "lon": 110.8264
     },
     "Lasem": {
         "description": "Known as 'Batik Tiga Negeri' (Three Realms), it blends Javanese, Chinese (red color), and Dutch influences. It is famous for its intricate details.",
-        "pattern": "Intricate blend of Chinese motifs (dragons, phoenixes, flowers) in bright red (getih pitik) with Javanese geometric backgrounds."
+        "pattern": "Intricate blend of Chinese motifs (dragons, phoenixes, flowers) in bright red (getih pitik) with Javanese geometric backgrounds.",
+        "origin": "Lasem, Rembang", "lat": -6.6922, "lon": 111.4528
     },
     "Mega Mendung": {
         "description": "Originating from Cirebon, this cloud pattern symbolizes patience. Just as clouds hold rain to cool the earth, a leader must control their emotions.",
-        "pattern": "Stylized cloud shapes with graduating layers of color (usually 5-7 layers) from dark to light, often in blue or red tones."
+        "pattern": "Stylized cloud shapes with graduating layers of color (usually 5-7 layers) from dark to light, often in blue or red tones.",
+        "origin": "Cirebon, West Java", "lat": -6.7320, "lon": 108.5523
     },
     "Parang": {
         "description": "One of the oldest motifs, resembling waves breaking against a reef. It symbolizes continuous struggle, resilience, and the spirit of never giving up.",
-        "pattern": "Diagonal parallel bands containing 'S' shaped knife-like patterns, interlocking continuously."
+        "pattern": "Diagonal parallel bands containing 'S' shaped knife-like patterns, interlocking continuously.",
+        "origin": "Solo (Surakarta)", "lat": -7.5755, "lon": 110.8243
     },
     "Pekalongan": {
         "description": "From the 'City of Batik', featuring vibrant colors and naturalistic floral bouquets (buketan). It reflects the dynamic coastal culture and foreign influences.",
-        "pattern": "Vibrant, multi-colored designs often featuring elaborate floral bouquets (buketan) and birds (hong), filling the space dynamically."
+        "pattern": "Vibrant, multi-colored designs often featuring elaborate floral bouquets (buketan) and birds (hong), filling the space dynamically.",
+        "origin": "Pekalongan", "lat": -6.8898, "lon": 109.6746
     },
     "Priangan": {
         "description": "A general term for batik from the Priangan region (Tasikmalaya, Ciamis, Garut). It is characterized by open patterns and a lighter, more natural feel.",
-        "pattern": "Naturalistic flora and fauna motifs arranged openly (not densely packed), often on light backgrounds with soft colors."
+        "pattern": "Naturalistic flora and fauna motifs arranged openly (not densely packed), often on light backgrounds with soft colors.",
+        "origin": "Tasikmalaya", "lat": -7.3196, "lon": 108.2201
     },
     "Sekar Jagad": {
         "description": "Literally meaning 'Flowers of the World.' It represents the diversity and beauty of different cultures coming together in harmony.",
-        "pattern": "Map-like arrangement of irregular patches or islands, each filled with different contrasting patterns and motifs."
+        "pattern": "Map-like arrangement of irregular patches or islands, each filled with different contrasting patterns and motifs.",
+        "origin": "Solo/Yogya", "lat": -7.6000, "lon": 110.5000
     },
     "Sidoluhur": {
         "description": "Means 'Hope for Nobility'. Traditionally worn by brides and grooms, it symbolizes the prayer for a noble and virtuous life together.",
-        "pattern": "Geometric grid containing square or diamond frames filled with symbolic motifs like garuda wings, temples, or flowers."
+        "pattern": "Geometric grid containing square or diamond frames filled with symbolic motifs like garuda wings, temples, or flowers.",
+        "origin": "Surakarta", "lat": -7.5755, "lon": 110.8243
     },
     "Sidomukti": {
         "description": "Means 'Hope for Happiness and Prosperity'. Worn during weddings, it symbolizes the wish for a happy, prosperous, and fulfilled future.",
-        "pattern": "Similar to Sidoluhur, featuring geometric frames filled with motifs like butterflies or small shrines (meru), often on a bamboo-weave background."
+        "pattern": "Similar to Sidoluhur, featuring geometric frames filled with motifs like butterflies or small shrines (meru), often on a bamboo-weave background.",
+        "origin": "Surakarta", "lat": -7.5755, "lon": 110.8243
     },
     "Sogan": {
         "description": "The classic brown batik of Central Java. The color comes from the Soga tree bark. It represents humility, down-to-earth nature, and tradition.",
-        "pattern": "Characterized by its color palette of dark brown, yellowish-brown, and black/white. Can feature various classic motifs like Parang, Kawung, or Semen."
+        "pattern": "Characterized by its color palette of dark brown, yellowish-brown, and black/white. Can feature various classic motifs like Parang, Kawung, or Semen.",
+        "origin": "Solo (Surakarta)", "lat": -7.5755, "lon": 110.8243
     },
     "Tambal": {
         "description": "Meaning 'Patchwork' or 'Mending'. It consists of various motif fragments. Traditionally believed to have healing properties for the sick.",
-        "pattern": "Patchwork-like arrangement of triangles or squares, each containing a different batik motif (Parang, Ceplok, etc.)."
+        "pattern": "Patchwork-like arrangement of triangles or squares, each containing a different batik motif (Parang, Ceplok, etc.).",
+        "origin": "Yogyakarta", "lat": -7.7956, "lon": 110.3695
     },
     "Truntum": {
         "description": "Created by a Queen who felt neglected by the King. The star-like flowers symbolize unconditional love and a romance that blooms again in the darkness.",
