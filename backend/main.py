@@ -237,6 +237,9 @@ async def analyze_batik(file: UploadFile = File(...)):
         "confidence": round(conf_score, 4),
         "description": info["description"],
         "pattern": info.get("pattern", "Pattern details not available."),
+        "origin": info.get("origin", "Indonesia"),
+        "lat": info.get("lat", -0.7893),
+        "lon": info.get("lon", 113.9213),
         "heatmap": heatmap_base64,
         "id": file_id
     }
