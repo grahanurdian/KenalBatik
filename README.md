@@ -67,4 +67,3 @@ The application consists of a modern web interface for users to upload images an
 
 ## License
 
-[Add License Information Here]
