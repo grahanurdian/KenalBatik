@@ -1,0 +1,21 @@
+# --- System ---
+.DS_Store
+.env
+
+# --- Python / Backend ---
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+
+# IMPORTANT: Ignore the raw images, but keep the trained model (.pth)
+backend/dataset/
+
+# --- Node / Frontend ---
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+
+# --- IDE ---
+.vscode/
+.idea/
