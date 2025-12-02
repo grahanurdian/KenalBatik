@@ -170,7 +170,8 @@ BATIK_INFO = {
     },
     "Truntum": {
         "description": "Created by a Queen who felt neglected by the King. The star-like flowers symbolize unconditional love and a romance that blooms again in the darkness.",
-        "pattern": "Small, repetitive star-like or jasmine flower motifs scattered evenly across a dark background, resembling a starry night sky."
+        "pattern": "Small, repetitive star-like or jasmine flower motifs scattered evenly across a dark background, resembling a starry night sky.",
+        "origin": "Surakarta, Central Java", "lat": -7.5755, "lon": 110.8243
     }
 }
 
