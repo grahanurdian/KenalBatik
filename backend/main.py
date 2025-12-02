@@ -7,8 +7,17 @@ from gradcam import BatikGradCAM
 import torch
 from torchvision import models, transforms
 import random
+import shutil
+import os
+import uuid
+from pydantic import BaseModel
 
 app = FastAPI()
+
+# Ensure temp_uploads exists
+os.makedirs("temp_uploads", exist_ok=True)
+# Ensure dataset exists (optional, but good practice if we are moving files there)
+os.makedirs("dataset", exist_ok=True)
 
 # --- 1. CONFIGURATION ---
 app.add_middleware(
@@ -157,6 +166,11 @@ async def analyze_batik(file: UploadFile = File(...)):
     if image.mode != "RGB":
         image = image.convert("RGB")
 
+    # 1b. SAVE TO TEMP
+    file_id = f"{uuid.uuid4()}.jpg"
+    temp_path = os.path.join("temp_uploads", file_id)
+    image.save(temp_path)
+
     # 2. AI PREDICTION
     if model:
         # Prepare image for the brain
@@ -200,5 +214,30 @@ async def analyze_batik(file: UploadFile = File(...)):
         "confidence": round(conf_score, 4),
         "description": info["description"],
         "pattern": info.get("pattern", "Pattern details not available."),
-        "heatmap": heatmap_base64
+        "heatmap": heatmap_base64,
+        "id": file_id
     }
+
+class FeedbackRequest(BaseModel):
+    file_id: str
+    correct_label: str
+
+@app.post("/feedback")
+def submit_feedback(feedback: FeedbackRequest):
+    # 1. Validate Label
+    if feedback.correct_label not in CLASS_NAMES:
+        return {"error": "Invalid Class Name"}
+
+    # 2. Verify File Exists
+    temp_path = os.path.join("temp_uploads", feedback.file_id)
+    if not os.path.exists(temp_path):
+        return {"error": "File not found or expired"}
+
+    # 3. Move to Dataset
+    target_dir = os.path.join("dataset", feedback.correct_label)
+    os.makedirs(target_dir, exist_ok=True)
+    
+    target_path = os.path.join(target_dir, feedback.file_id)
+    shutil.move(temp_path, target_path)
+
+    return {"message": "Image added to training data", "path": target_path}
